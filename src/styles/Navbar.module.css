@@ -1,0 +1,136 @@
+.navbar {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.4rem;
+}
+
+.nav_list {
+  width: 30%;
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+}
+
+a {
+  color: var(--color-eerie-black);
+  text-decoration: none;
+}
+
+.shopping_cart_icon_wrapper {
+  position: relative;
+  padding: 8px;
+  transition: transform 0.4s ease-in-out;
+}
+
+.shopping_cart_icon {
+  width: 1.8rem;
+}
+
+.shopping_cart_icon_wrapper:hover {
+  cursor: pointer;
+  transform: rotateZ(10deg);
+}
+
+.total_quantity_badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  color: var(--color-antiflash-white);
+  background-color: var(--color-eerie-black-transparent);
+  font-size: 12px;
+  border-radius: 50px;
+}
+
+/* for hamburger menu */
+.burger {
+  display: none;
+  position: relative;
+  order: -1;
+  width: 1.6rem;
+  height: 1.15rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  z-index: 4; /* so that the burger menu icon doesn't hide below the nav list when it's open */
+}
+
+.burger_line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2.1px;
+  background-color: var(--color-eerie-black);
+  border: none;
+  outline: none;
+  transition: all 0.4s ease-in-out;
+}
+
+/* three horizontally stacked lines */
+.burger_line:nth-child(1) {
+  top: 0rem;
+}
+
+.burger_line:nth-child(2) {
+  top: 0.5rem;
+  width: 70%;
+}
+
+.burger_line:nth-child(3) {
+  top: 1rem;
+}
+
+/* close button X */
+.burger_line.active:nth-child(1) {
+  top: 0.5rem;
+  rotate: 135deg;
+}
+
+.burger_line.active:nth-child(2) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.burger_line.active:nth-child(3) {
+  top: 0.5rem;
+  rotate: -135deg;
+}
+
+/* when clicked on the menu, bring back the nav_list */
+.nav_list.active {
+  transform: translateX(0%);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    justify-content: space-between;
+  }
+
+  .logo {
+    width: 5vmax;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  .nav_list {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-antiflash-white-transparent);
+    backdrop-filter: blur(10px);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in;
+    z-index: 2; /* to hide the cart icon when nav list is open */
+  }
+}
